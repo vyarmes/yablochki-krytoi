@@ -18,6 +18,7 @@ body {
     backdrop-filter: blur(6px);
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -28,7 +29,8 @@ body {
 }
 
 header {
-    background: black;
+    background: url('https://images.unsplash.com/photo-1593642634524-b40b5baae6aa?auto=format&fit=crop&w=1600&q=80')
+        center/cover no-repeat;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -52,6 +54,74 @@ header {
     opacity: 0.85;
 }
 
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 20px;
+    background: #111;
+}
+
+.card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 229, 255, 0.4);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #00e5ff;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00e5ff;
+    color: #000;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.card .btn:hover {
+    background: #00b3cc;
+}
+
+.footer {
+    background: #111;
+    color: #777;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 32px;
@@ -67,5 +137,13 @@ header {
 
     .logo {
         font-size: 22px;
+    }
+
+    .cards-container {
+        gap: 15px;
+    }
+
+    .card {
+        width: 90%;
     }
 }
