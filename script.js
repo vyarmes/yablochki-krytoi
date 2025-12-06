@@ -1,5 +1,5 @@
 const url = "https://yablochki-2d82.restdb.io/rest/product";
-const api_key = "7f49b7580d06527f7871382829db980512419";
+const api_key = "69343d881c64b95446dde62e";
 
 const my_header = {
     "Content-Type": "application/json",
