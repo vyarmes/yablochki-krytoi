@@ -1,7 +1,7 @@
 let productsGrid = document.getElementById("products-grid");
 let productsArray = [];
-const url = "https://magazin-0600.restdb.io/rest/product";
-const api_key ="69343d861c64b97709dde62d";
+const url = "https://yablochki-2d82.restdb.io/rest/product";
+const api_key ="69343d881c64b95446dde62e";
 
 const my_header = {
     "Content-Type": "application/json",
@@ -26,7 +26,7 @@ fetch(url,{
             <img class = 'product-photo' src="${p.photo_url}" alt='${p.name}'>
             <p class = 'product-price'><b>Price: </b>${p.price}</p>
             <p class = 'product-description'><b>Description: </b>${p.description}</p>
-            <a href='User.html?id=${p.author_id}'>Seller profile</a>
+            <p class = 'description'>${p.description}</a>
             <button onclick="addProductToCart(${p.id})">Buy</button> 
             `;
     productsGrid.append(pElem);
