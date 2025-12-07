@@ -27,7 +27,7 @@ fetch(url,{
             <p class = 'product-price'><b>Price: </b>${p.price}</p>
             <p class = 'product-description'><b>Description: </b>${p.description}</p>
             <p class = 'description'>${p.description}</a>
-            <button onclick="addProductToCart(${p.id})">Buy</button> 
+            <button onclick="addProductToCart(${p._id})">Buy</button> 
             `;
     productsGrid.append(pElem);
   });
@@ -43,7 +43,7 @@ if (localStorage.getItem("cart")) {
 
 function addProductToCart(id) {
   let product = productsArray.find(function (p) {
-    return p.id == id;
+    return p.id == _id;
   });
   cart.push(product);
   drawCartProducts();
