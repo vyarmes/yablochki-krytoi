@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width inital-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Magazine</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
   <body>
     <header>
 
       <h1>Magazine</h1>
+      <a class="admin-page-link" href="admin.html">Check Admin</a>
       <div id="cart">
 
         <button id="cart-button" onclick="openCart()">
-          <img id="cart-img" src="img\25619.png" alt="cart" />
+          <img id="cart-img" src="" alt="cart" />
         </button>
 
         <div id="cart-products" class="hide">
@@ -30,7 +31,22 @@
       <div id="products-grid">
 
       </div>
+          <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close"> &items;</span>
+        <div id="order-block"></div>
+        <form id="order-form">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="text" name="address" placeholder="Address" required>
+          <input type="tel" name="tel" placeholder="Phone Number" required>
+          <input type="text" name="Post-number" placeholder="Post Office Number" required>
+          <h2>Total price: <span id="price"></span></h2>
+          <input type="submit" value="Order">
+        </form>
+      </div>
+    </div>
     </main>
+
 
     <footer>
       <h2>2025 ©Magazine</h2>

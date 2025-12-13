@@ -1,21 +1,29 @@
 let productsGrid = document.getElementById("products-grid");
 let productsArray = [];
-const url = "https://yablochki-2d82.restdb.io/rest/product";
-const api_key ="69343d881c64b95446dde62e";
+let xhr = new XMLHttpRequest();
+const url = "https://yablochki-2d82.restdb.io/rest";
+xhr.open('GET', url+'/product')
+// const api_key ="69343d881c64b95446dde62e";
 
-const my_header = {
-    "Content-Type": "application/json",
-    "x-apikey": api_key,
-    "cache_control": "no-cache",
-};
+xhr.setRequestHeader("content-type", "application/json")
+xhr.setRequestHeader("x-apikey", "69343d881c64b95446dde62e")
+// xhr.setRequestHeader("cache_control", "no-cache")
 
-fetch(url,{
-    method: "GET",
-    headers: my_header
-})
+// const my_header = {
+//     "Content-Type": "application/json",
+//     "x-apikey": api_key,
+//     "cache_control": "no-cache",
+// };
 
-.then(async function (response) {
-    productsArray = await response.json();;
+// fetch(url,{
+//     method: "GET",
+//     headers: my_header
+// })
+
+// .then(async function (response) {
+xhr.responseType = 'json';
+xhr.onload = function(){
+    productsArray = xhr.response;
     productsGrid.innerHTML = null;
     productsArray.forEach((p) => {
     productsArray.push(p);
@@ -31,7 +39,8 @@ fetch(url,{
             `;
     productsGrid.append(pElem);
   });
-})
+}
+xhr.send();
 
 let cartProd = document.getElementById("cart-products");
 
@@ -71,13 +80,61 @@ function drawCartProducts() {
         <button onclick="buyAll()">Buy All</button>
     `;
 }
+let orderBlock = document.getElementById('order-block');
+let modal = document.getElementById('myModal');
+let span = document.getElementsByClassName('close')[0];
+span.onclick=function(){
+  modal.style.display='none';
+}
+window.onclick = function(event){
+  if(event.target==modal){
+    modal.style.display = 'none';
+  }
+}
 
 function buyAll() {
-  cart = [];
-  cartProd.innerHTML = "Money was withdrawn from your credit card";
-  localStorage.setItem("cart", "[]");
+  modal.style.display = "block";
+  let sum = 0;
+  orderBlock.innerHTML = null;
+  cart.forEach(function(p){
+    orderBlock.innerHTML += `
+    <div class="item">
+      <img width="100px" src = "${p.photo_url}">
+      <h2>${p.name} | ${p.price}$</h2>
+    </div>`;
+    sum += +p.price;
+  });
+  documet.getElementById('price').innerHTML = sum + '$';
 }
 
 function openCart() {
   cartProd.classList.toggle("hide");
 }
+document.getElementById('order-form').addEventListener('submit', function(e){
+  e.preventDeafult();
+  let data = JSON.stringify({
+    "name": e.target['name'].value,
+    "address": e.taget['address'].value,
+    "phone": e.target['phone'].value,
+    "post_number": e.target['post_number'].value,
+    "status": "New",
+    "products": localStorage.getItem('cart')
+  })
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url+"orders");
+  xhr.setRequestHeader("content-type", "application/json")
+  xhr.setRequestHeader("x-apikey", "69343d881c64b95446dde62e")
+  // xhr.setRequestHeader("cache_control", "no-cache")
+//   method: "POST",
+//   headers:{
+//     "content-type": "applycation/json",
+//     "x-apikey": "69343d881c64b95446dde62e",
+//     "cache-control": "no-cache",
+//   },
+//   body:data
+// })
+// modal.style.display = "none";
+// cart=[];
+// cartProd.innerHTML = 'CartisEmpty';
+// localStorage.setItem("cart", '[]');
+})

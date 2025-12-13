@@ -6,120 +6,126 @@
 }
 
 body {
-    background: #0e0e0e;
-    color: #eaeaea;
+    background: #fff;
+    color: #000;
+    line-height: 1.5;
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 40px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(6px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    color: #00e5ff;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 header {
-    background: url('https://images.unsplash.com/photo-1593642634524-b40b5baae6aa?auto=format&fit=crop&w=1600&q=80')
-        center/cover no-repeat;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .hero {
-    margin-top: auto;
-    padding: 70px 40px;
-    max-width: 650px;
+    margin: auto 0;
+    padding: 60px 40px;
+    max-width: 640px;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 800;
-    line-height: 1.2;
 }
 
 .hero p {
-    margin-top: 20px;
-    font-size: 20px;
-    opacity: 0.85;
+    margin-top: 18px;
+    font-size: 18px;
+    color: #444;
 }
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 24px;
     justify-content: center;
-    gap: 20px;
     padding: 60px 20px;
-    background: #111;
 }
 
 .card {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 10px;
     width: 300px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
     padding: 20px;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 229, 255, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .card img {
     width: 100%;
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 }
 
 .card h3 {
-    color: #00e5ff;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .card p {
-    font-size: 16px;
-    margin-bottom: 15px;
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 16px;
 }
 
 .card .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background: #00e5ff;
+    padding: 10px 18px;
+    border: 1px solid #000;
     color: #000;
-    border-radius: 6px;
-    font-weight: 700;
     text-decoration: none;
-    transition: 0.2s;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .card .btn:hover {
-    background: #00b3cc;
+    background: #000;
+    color: #fff;
 }
 
 .footer {
-    background: #111;
-    color: #777;
-    text-align: center;
+    border-top: 1px solid #e5e5e5;
     padding: 30px 20px;
-    margin-top: 40px;
-    border-top: 1px solid #333;
+    text-align: center;
+    color: #666;
 }
 
-.footer p {
-    margin: 5px 0;
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
 }
 
 @media (max-width: 768px) {
@@ -135,15 +141,11 @@ header {
         padding: 15px 20px;
     }
 
-    .logo {
-        font-size: 22px;
-    }
-
     .cards-container {
-        gap: 15px;
+        gap: 16px;
     }
 
     .card {
-        width: 90%;
+        width: 100%;
     }
 }
